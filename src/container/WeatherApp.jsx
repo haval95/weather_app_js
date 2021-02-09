@@ -28,6 +28,10 @@ const state = {
   ]
 }
 
+
+
+/* space  */
+
 export default function WeatherApp() {
     const [HeaderData, setHeaderData]= useState( {"rain":"none", "humidity": 20, "wind": 26, "pressure":85, "dewPoint": 25.5, "UVindex":66, "visibility":35} )
 
