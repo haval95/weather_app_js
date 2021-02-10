@@ -3,13 +3,9 @@
 }
 
 
-.grid{
+.col-2{
   display: grid;
-  grid-template-columns: 1fr;
-  padding: 25px;
-}
-
-.chart{
- width: 500px;
- height: inherit;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  
 }

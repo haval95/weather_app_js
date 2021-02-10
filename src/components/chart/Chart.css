@@ -1,0 +1,10 @@
+.chart{
+    text-align: center;
+    margin: auto;
+    padding:15px; 
+    width: 400px;
+}
+h2{
+    padding: 0 !important;
+    margin: 0px;
+}

@@ -5,11 +5,11 @@ import React, { useState } from 'react';
 
 import City from "../components/citytemp/CityTemp"
 import logo from "../logo.svg";
-
+import Chart from "../components/chart/Chart";
 import Location from "../components/citytemp/CityTemp"
 
 
-import {Line} from 'react-chartjs-2';
+
 let today = new Date();
 let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
 let now =today.getHours();
@@ -56,31 +56,23 @@ export default function WeatherApp() {
               visibility={HeaderData.visibility}
             />
 
-            <City
-            location={"Erbil"}
-            img={logo}
-            date={date}
-            overcast={"25C"}
-            feel ={ "cold"}
-            />
+            <div className="col-2">
+           <div>
+           <City
+           location={"Erbil"}
+           img={logo}
+           date={date}
+           overcast={"25C"}
+           feel ={ "cold"}
+           />
+           </div>
 
 
-            <div className="chart">
-              <Line
-                data={state}
-                options={{
-                  title:{
-                    display:true,
-                    text:'Average Rainfall per month',
-                    fontSize:20
-                  },
-                  legend:{
-                    display:true,
-                    position:'right'
-                  }
-                }}
-                />
-              </div>
+           
+              <Chart data={state} />
+            </div>
+            
+           
 
 
          </div>

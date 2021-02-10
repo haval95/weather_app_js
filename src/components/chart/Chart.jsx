@@ -1,0 +1,28 @@
+import {Line} from 'react-chartjs-2';
+
+import React from 'react'
+import "./Chart.css"
+
+export default function Chart({data}) {
+    return (
+       <div className="chart">
+       
+       <Line 
+        data={data}
+        options={{
+          title:{
+            display:true,
+            text:'Tempreature of the Day',
+            fontSize:20
+          },
+          legend:{
+            display:true,
+            position:'right'
+          }
+        }}
+        />
+       </div>
+        
+      
+    )
+}
