@@ -6,9 +6,16 @@ import React, { useState } from 'react';
 import City from "../components/citytemp/CityTemp"
 import logo from "../logo.svg";
 import Chart from "../components/chart/Chart";
-import Location from "../components/citytemp/CityTemp"
+import * as BootStrap from 'react-bootstrap';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+<link
+  rel="stylesheet"
+  href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+  integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk"
+  crossorigin="anonymous"
+/>
 
 let today = new Date();
 let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
@@ -45,37 +52,39 @@ export default function WeatherApp() {
 
    
     return (
-        <div className="">
-            <Header     
-              rain={HeaderData.rain} 
-              humidity={HeaderData.humidity} 
-              wind={HeaderData.wind} 
-              pressure={HeaderData.pressure} 
-              dewPoint={HeaderData.dewPoint}
-              UVindex={HeaderData.UVindex}
-              visibility={HeaderData.visibility}
-            />
+      <BootStrap.Container fluid >
+      <BootStrap.Row
+      className="justify-content-md-center bg-info p-1 text-light"
 
-            <div className="col-2">
-           <div>
-           <City
-           location={"Erbil"}
-           img={logo}
-           date={date}
-           overcast={"25C"}
-           feel ={ "cold"}
-           />
-           </div>
-
-
-           
+      >
+      <Header     
+      
+      rain={HeaderData.rain} 
+      humidity={HeaderData.humidity} 
+      wind={HeaderData.wind} 
+      pressure={HeaderData.pressure} 
+      dewPoint={HeaderData.dewPoint}
+      UVindex={HeaderData.UVindex}
+      visibility={HeaderData.visibility}
+    />
+      </BootStrap.Row>
+           <BootStrap.Row>
+              <City
+              location={"Erbil"}
+              img={logo}
+              date={date}
+              overcast={"25C"}
+              feel ={ "cold"}
+              />
               <Chart data={state} />
-            </div>
+           </BootStrap.Row>
+
+       
             
-           
+          
 
 
-         </div>
+           </BootStrap.Container>
 
         
     )
