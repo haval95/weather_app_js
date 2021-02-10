@@ -2,6 +2,7 @@ import React from 'react'
 import './Header.css';
 const Header = (props) => {
     return (
+        
         <div className="HeaderItems">
             <div> Rain: {props.rain}</div>
             <div> Humidity: {props.humidity}</div>
