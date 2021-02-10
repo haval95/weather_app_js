@@ -2,6 +2,7 @@
 
 import Header from '../components/Header/Header'
 import React, { useState } from 'react';
+import Location from "../components/citytemp/CityTemp"
 
 import {Line} from 'react-chartjs-2';
 let current = new Date();
