@@ -6,6 +6,8 @@ import React, { useState } from 'react';
 import City from "../components/citytemp/CityTemp"
 import logo from "../logo.svg";
 
+import WeekTemp from '../components/weektemp/WeekTemp'
+
 import Location from "../components/citytemp/CityTemp"
 
 
@@ -79,6 +81,14 @@ export default function WeatherApp() {
                     position:'right'
                   }
                 }}
+                />
+
+                <WeekTemp textInfo={"Rain on Tuesday through next Saturday"}
+                          icon={"https://cdn4.iconfinder.com/data/icons/programming-line-style/32/Cloud-512.png"}
+                          low={""}
+                          high={""}
+                          time={""}
+                          wind={12+"kph"}
                 />
               </div>
 
