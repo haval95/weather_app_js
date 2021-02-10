@@ -4,15 +4,14 @@ const Header = (props) => {
     return (
         
         <div className="HeaderItems">
-            <div> Rain: {props.rain}</div>
-            <div> Humidity: {props.humidity}</div>
-            <div>Wind: {props.wind}</div>
-            <div>Pressure: {props.pressure}</div>
-            <div> Dew Point: {props.dewPoint}</div>
-            <div>UV Index: {props.UVindex}</div>
-            <div>Visibility: {props.visibility}</div>
-            
-        </div>
+            <div className="item"> Rain: {props.rain}</div>
+            <div className="item"> Humidity: {props.humidity}</div>
+            <div className="item">Wind: {props.wind}</div>
+            <div className="item">Pressure: {props.pressure}</div>
+            <div className="item"> Dew Point: {props.dewPoint}</div>
+            <div className="item">UV Index: {props.UVindex}</div>
+            <div className="item">Visibility: {props.visibility}</div>
+        </div>  
     )
 }
 
