@@ -1,4 +1,5 @@
 import React from 'react'
+
 import  "./CityTemp.css";
 
 export default function CityTemp(props) {
@@ -20,5 +21,6 @@ export default function CityTemp(props) {
             </div>
         </div>
         
+
     )
 }

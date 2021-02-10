@@ -2,8 +2,12 @@
 
 import Header from '../components/Header/Header'
 import React, { useState } from 'react';
+
 import City from "../components/citytemp/CityTemp"
 import logo from "../logo.svg";
+
+import Location from "../components/citytemp/CityTemp"
+
 
 import {Line} from 'react-chartjs-2';
 let today = new Date();
