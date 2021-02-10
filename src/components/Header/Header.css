@@ -2,10 +2,8 @@
     background-color: rgb(247, 247, 247);
     height: 20px;
     padding-bottom: 10px;
-}
-.item{
-    display: inline;
-    font-size: 12px;
-    padding-left: 65px;
-    padding-right: 60px;
+    display: grid;
+   grid-template-columns:auto ;
+    grid-auto-flow: column;
+    grid-gap: 15px;
 }
