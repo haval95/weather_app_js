@@ -13,10 +13,10 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 export default function WeatherApp() {
     const [HeaderData, setHeaderData]= useState( {"rain":"none", "humidity": 20, "wind": 26, "pressure":85, "dewPoint": 25.5, "UVindex":66, "visibility":35} )
 
-    const [location, setlocation] = useState({error:null, isLoaded: false,locationData:[]})
-    const [WeatherData, setWeatherData] = useState({error:null, loading:false, data:{}})
-
-    const [userCountry, setuserCountry] = useState("")
+    const [location, setlocation] = useState({ isLoaded: false,locationData:[]})
+    const [WeatherData, setWeatherData] = useState({ loading:false, data:{}})
+    const [Error, setError] = useState(null)
+    const [userCountry, setUserCountry] = useState("")
 
     const [URL, setURL] = useState("https://www.metaweather.com/api/location/search/?query=london")
     const [WeatherURL, setWeatherURL] = useState("")
@@ -29,7 +29,7 @@ export default function WeatherApp() {
               return result;
           },
           (error) => {
-            setlocation({errors:error});
+            setError(error);
           }
       );
 
@@ -53,13 +53,12 @@ export default function WeatherApp() {
        const handleSubmit =(e)=>{
         e.preventDefault();
           setURL("https://www.metaweather.com/api/location/search/?query="+userCountry)
-          setuserCountry("")
+          setUserCountry("")
        }
 
 
-       const handleChange =(e)=>{
-        setuserCountry(e.target.value)
-       }
+       const handleChange =(e)=> setUserCountry(e.target.value)
+       
 
       
 
