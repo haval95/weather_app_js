@@ -7,18 +7,18 @@ import Chart from "../components/chart/Chart";
 import * as BootStrap from 'react-bootstrap';
 import Search from "../components/Search/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Loading from "../components/loading/Loading";
 
 
 
 export default function WeatherApp() {
-    const [HeaderData, setHeaderData]= useState( {"rain":"none", "humidity": 20, "wind": 26, "pressure":85, "dewPoint": 25.5, "UVindex":66, "visibility":35} )
 
     const [location, setlocation] = useState({ isLoaded: false,locationData:[]})
     const [WeatherData, setWeatherData] = useState({ loading:false, data:{}})
     const [Error, setError] = useState(null)
     const [userCountry, setUserCountry] = useState("")
 
-    const [URL, setURL] = useState("https://www.metaweather.com/api/location/search/?query=london")
+    const [URL, setURL] = useState("https://www.metaweather.com/api/location/search/?query=Baghdad")
     const [WeatherURL, setWeatherURL] = useState("")
     
     const  fetching =  (URL) =>
@@ -26,10 +26,10 @@ export default function WeatherApp() {
         .then((res) => res.json())
         .then(
           (result) => {
-              return result;
+              return result
           },
           (error) => {
-            setError(error);
+            setError(error.number);
           }
       );
 
@@ -52,8 +52,10 @@ export default function WeatherApp() {
 
        const handleSubmit =(e)=>{
         e.preventDefault();
+      
           setURL("https://www.metaweather.com/api/location/search/?query="+userCountry)
           setUserCountry("")
+        
        }
 
 
@@ -63,47 +65,41 @@ export default function WeatherApp() {
       
 
     return (
-      <BootStrap.Container fluid >
+    <React.Fragment>
+        {
+        (Error)?
+        console.log(Error)
+
+        :(WeatherData.data) && (WeatherData.loading) 
+        
+        ?<BootStrap.Container fluid  >
+            <BootStrap.Row className="justify-content-sm-center bg-info p-4 text-light">
+                <Header todayData={WeatherData.data.consolidated_weather[0]} />
+            </BootStrap.Row>
+
+            <BootStrap.Row  className="justify-content-sm-center  p-1 text-light">
+                <Search handleSubmit={handleSubmit} handleChange={handleChange} inputValue={userCountry} />
+            </BootStrap.Row>
+              
+
+            <BootStrap.Container>
+              <BootStrap.Row>
+                    <City
+                    location={WeatherData.data.title}
+                    data={WeatherData.data.consolidated_weather[0]}
+                    />
+                    <Chart data={state} />
+                </BootStrap.Row>
+            </BootStrap.Container>
+
+
+
+
+        </BootStrap.Container>
      
-     
-      <BootStrap.Row
-      className="justify-content-md-center bg-info p-1 text-light">
-          <Header     
-          rain={HeaderData.rain} 
-          humidity={HeaderData.humidity} 
-          wind={HeaderData.wind} 
-          pressure={HeaderData.pressure} 
-          dewPoint={HeaderData.dewPoint}
-          UVindex={HeaderData.UVindex}
-          visibility={HeaderData.visibility}
-        />
-      </BootStrap.Row>
-
-
-
-      <BootStrap.Row  className="justify-content-md-center  p-1 text-light">
-        <Search handleSubmit={handleSubmit} handleChange={handleChange} inputValue={userCountry} />
-      </BootStrap.Row>
-
-
-
-           <BootStrap.Row>
-              <City
-              location={"Erbil"}
-              img={logo}
-              date={date}
-              overcast={"25C"}
-              feel ={ "cold"}
-              />
-              <Chart data={state} />
-           </BootStrap.Row>
-
-       
-            
-          
-
-
-           </BootStrap.Container>
+        : <Loading />
+      }
+    </React.Fragment>
 
         
     )

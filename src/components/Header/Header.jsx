@@ -1,18 +1,24 @@
 import React from 'react'
-import './Header.css';
+import format from "../../helper/helpers";
+import * as Bootstrap from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+
 const Header = (props) => {
     return (
         
-        <div className="HeaderItems">
-            <div className="item"> Rain: {props.rain}</div>
-            <div className="item"> Humidity: {props.humidity}</div>
-            <div className="item">Wind: {props.wind}</div>
-            <div className="item">Pressure: {props.pressure}</div>
-            <div className="item"> Dew Point: {props.dewPoint}</div>
-            <div className="item">UV Index: {props.UVindex}</div>
-            <div className="item">Visibility: {props.visibility}</div>
-        </div>  
+        <React.Fragment >
+            <Bootstrap.Col sm className="item"> Rain: {format(props.todayData.predictability)}</Bootstrap.Col>
+            <Bootstrap.Col sm className="item"> Humidity: {format(props.todayData.humidity)}</Bootstrap.Col>
+            <Bootstrap.Col sm className="item">Wind: {format(props.todayData.wind_speed)}</Bootstrap.Col>
+            <Bootstrap.Col sm className="item"> Wind Direction: {format(props.todayData.wind_direction)}</Bootstrap.Col>
+            <Bootstrap.Col sm className="item">Pressure: {format(props.todayData.air_pressure)}</Bootstrap.Col>
+            <Bootstrap.Col sm className="item">Visibility: {format(props.todayData.visibility)}</Bootstrap.Col>
+        </React.Fragment>  
     )
 }
+
+
+
 
 export default Header

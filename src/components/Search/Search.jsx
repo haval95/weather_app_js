@@ -8,7 +8,7 @@ export default function Search(props) {
         <Bootstrap.Form className="m-2" onSubmit={props.handleSubmit}>
           <Bootstrap.InputGroup className="mb-3">
             <Bootstrap.FormControl
-              placeholder="Country"
+              placeholder="City [Capital]"
               aria-label="Country"
               aria-describedby="basic-addon2"
               onChange={props.handleChange}

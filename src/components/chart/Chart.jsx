@@ -1,11 +1,12 @@
 import {Line} from 'react-chartjs-2';
-
+import * as BootStrap from 'react-bootstrap';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import React from 'react'
 import "./Chart.css"
 
 export default function Chart({data}) {
     return (
-       <div className="chart">
+       <BootStrap.Col md className="mt-1">
        
        <Line 
         data={data}
@@ -21,7 +22,7 @@ export default function Chart({data}) {
           }
         }}
         />
-       </div>
+       </BootStrap.Col>
         
       
     )
