@@ -1,22 +1,39 @@
 
-import Header from '../components/Header/Header'
 import React, { useState, useEffect } from 'react';
-import City from "../components/citytemp/CityTemp"
-import logo from "../logo.svg";
-import Chart from "../components/chart/Chart";
 import * as BootStrap from 'react-bootstrap';
-import Search from "../components/Search/Search";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Header from '../components/Header/Header'
+import City from "../components/citytemp/CityTemp"
+import Chart from "../components/chart/Chart";
+import Search from "../components/Search/Search";
 import Loading from "../components/loading/Loading";
+import WeekTemp from "../components/weektemp/WeekTemp";
 
 
 
 export default function WeatherApp() {
 
-    const [location, setlocation] = useState({ isLoaded: false,locationData:[]})
+   
     const [WeatherData, setWeatherData] = useState({ loading:false, data:{}})
-    const [Error, setError] = useState(null)
+    const [error, seterror] = useState(null)
     const [userCountry, setUserCountry] = useState("")
+
+    const state = {
+      labels: ["now", time(1), time(2),
+      time(3), time(4),time(5)],
+      datasets: [
+        {
+        
+          label: 'temperture',
+          fill: false,
+          lineTension: 0.5,
+          backgroundColor: 'rgba(75,192,192,1)',
+          borderColor: 'rgba(55,100,25,1)',
+          borderWidth: 1,
+          data: [10,5,12,33,55]
+        }
+      ]
+    }
 
     const [URL, setURL] = useState("https://www.metaweather.com/api/location/search/?query=Baghdad")
     const [WeatherURL, setWeatherURL] = useState("")
@@ -29,7 +46,7 @@ export default function WeatherApp() {
               return result
           },
           (error) => {
-            setError(error.number);
+            seterror(error);
           }
       );
 
@@ -37,7 +54,6 @@ export default function WeatherApp() {
       useEffect(() => {
           fetching(URL)
          .then((result) => {
-                            setlocation({isLoaded:true, locationData: result} ) 
                             setWeatherURL("https://www.metaweather.com/api/location/"+result[0].woeid)
                           })
        }, [URL]);
@@ -55,6 +71,7 @@ export default function WeatherApp() {
       
           setURL("https://www.metaweather.com/api/location/search/?query="+userCountry)
           setUserCountry("")
+          
         
        }
 
@@ -67,10 +84,7 @@ export default function WeatherApp() {
     return (
     <React.Fragment>
         {
-        (Error)?
-        console.log(Error)
-
-        :(WeatherData.data) && (WeatherData.loading) 
+      (WeatherData.data) && (WeatherData.loading) 
         
         ?<BootStrap.Container fluid  >
             <BootStrap.Row className="justify-content-sm-center bg-info p-4 text-light">
@@ -90,6 +104,12 @@ export default function WeatherApp() {
                     />
                     <Chart data={state} />
                 </BootStrap.Row>
+
+
+                <BootStrap.Row className="mt-5 ">
+                  <WeekTemp data={WeatherData.data} />
+                </BootStrap.Row>
+
             </BootStrap.Container>
 
 
@@ -112,7 +132,7 @@ export default function WeatherApp() {
 
 
 let today = new Date();
-let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+
 let now =today.getHours();
 
 const time= (afterHour) => {
@@ -121,19 +141,3 @@ const time= (afterHour) => {
 }
 
 
-const state = {
-  labels: ["now", time(1), time(2),
-  time(3), time(4),time(5)],
-  datasets: [
-    {
-    
-      label: 'temperture',
-      fill: false,
-      lineTension: 0.5,
-      backgroundColor: 'rgba(75,192,192,1)',
-      borderColor: 'rgba(0,0,0,1)',
-      borderWidth: 1,
-      data: [10,5,12,33,55]
-    }
-  ]
-}
