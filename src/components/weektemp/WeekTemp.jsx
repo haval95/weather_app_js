@@ -9,7 +9,7 @@ export default function WeekTemp(props) {
     console.log()
     return (
         <React.Fragment>
-            <Bootstrap.Table responsive striped hover size="sm">
+            <Bootstrap.Table  striped hover size="sm" >
             <thead>
             <Th header={[" Icon", "Date", "Low", "High", "Wind Speed"]}/>
             </thead>

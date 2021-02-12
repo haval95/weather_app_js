@@ -1,8 +1,9 @@
+import React from 'react'
 import {Line} from 'react-chartjs-2';
 import * as BootStrap from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react'
-import "./Chart.css"
+
+
 
 export default function Chart({data}) {
     return (

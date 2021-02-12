@@ -97,10 +97,12 @@ export default function WeatherApp() {
               
 
             <BootStrap.Container>
-              <BootStrap.Row>
+              <BootStrap.Row className="mx-auto ">
                     <City
                     location={WeatherData.data.title}
-                    data={WeatherData.data.consolidated_weather[0]}
+                    data={WeatherData.data.consolidated_weather[0] }
+                    sunRise={WeatherData.data.sun_rise }
+                    sunSet={WeatherData.data.sun_set }
                     />
                     <Chart data={state} />
                 </BootStrap.Row>
