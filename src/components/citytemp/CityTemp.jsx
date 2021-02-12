@@ -13,7 +13,7 @@ export default function CityTemp(props) {
             
             <BootStrap.Row>
                 <BootStrap.Col className="text-right my-auto">
-                    <img src={getImg(props.data.weather_state_abbr)} className="icon"/>
+                    <img src={getImg(props.data.weather_state_abbr)} className="icon" alt="weather icon"/>
                 </BootStrap.Col>
                 
                 <BootStrap.Col className=" text-left">
