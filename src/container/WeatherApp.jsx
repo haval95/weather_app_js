@@ -53,7 +53,7 @@ export default function WeatherApp() {
               return result
           },
           (error) => {
-            seterror(error);
+            seterror(error.message)
           }
       );
 
@@ -98,7 +98,7 @@ export default function WeatherApp() {
     return (
     <React.Fragment>
         {
-      (WeatherData.data) && (WeatherData.loading) 
+        (WeatherData.data) && (WeatherData.loading) 
         
         ?<BootStrap.Container fluid  >
             <BootStrap.Row className="justify-content-sm-center bg-info p-4 text-light">

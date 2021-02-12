@@ -1,9 +1,0 @@
-.HeaderItems{
-  
-    height: 20px;
-    padding-bottom: 10px;
-    display: grid;
-   grid-template-columns:auto ;
-    grid-auto-flow: column;
-    grid-gap: 15px;
-}
