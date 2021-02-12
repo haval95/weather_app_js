@@ -3,13 +3,11 @@ import * as BootStrap from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import getImg from "../imgs/imgs";
 import format from "../../helper/helpers";
-import Datetime from 'react-datetime';
-import "react-datetime/css/react-datetime.css";
- 
+
 
 export default function CityTemp({location, data,sunRise, sunSet}) {
     return (
-        <BootStrap.Col md={5} className= "offset-md-1 m-auto">
+        <BootStrap.Col md={5} className= "offset-md-1 ">
             <h1 className="text-lg-left text-sm-center text-info"> {location} </h1>  
             
             <BootStrap.Row >
