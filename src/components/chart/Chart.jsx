@@ -1,8 +1,9 @@
+import React from 'react'
 import {Line} from 'react-chartjs-2';
 import * as BootStrap from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react'
-import "./Chart.css"
+
+
 
 export default function Chart({data}) {
     return (
@@ -13,15 +14,21 @@ export default function Chart({data}) {
         options={{
           title:{
             display:true,
-            text:'Tempreature of the Day',
+            text:'Tempreature Of the Week',
             fontSize:20
           },
           legend:{
             display:true,
-            position:'right'
+            position:'bottom',
+            labels: {
+                // This more specific font property overrides the global property
+                fontColor: 'rgb(23,162,184)'
+            }
           }
         }}
         />
+
+      
        </BootStrap.Col>
         
       

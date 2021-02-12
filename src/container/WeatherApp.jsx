@@ -8,6 +8,7 @@ import Chart from "../components/chart/Chart";
 import Search from "../components/Search/Search";
 import Loading from "../components/loading/Loading";
 import WeekTemp from "../components/weektemp/WeekTemp";
+import oneWeekTemp from "../helper/oneWeekTemp";
 
 
 
@@ -16,28 +17,34 @@ export default function WeatherApp() {
    
     const [WeatherData, setWeatherData] = useState({ loading:false, data:{}})
     const [error, seterror] = useState(null)
-    const [userCountry, setUserCountry] = useState("")
-
-    const state = {
-      labels: ["now", time(1), time(2),
-      time(3), time(4),time(5)],
-      datasets: [
-        {
-        
-          label: 'temperture',
-          fill: false,
-          lineTension: 0.5,
-          backgroundColor: 'rgba(75,192,192,1)',
-          borderColor: 'rgba(55,100,25,1)',
-          borderWidth: 1,
-          data: [10,5,12,33,55]
-        }
-      ]
-    }
-
+    const [userCountry, setUserCountry] = useState("");
+    const [lables, setlables] = useState([])
+    const [datasets, setdatasets] = useState([])
+    const [Humidity, setHumidity] = useState([])
+    const ChartData = { labels:lables,
+    datasets: [
+      {
+        label: "Tempreture °c",
+        data: datasets,
+        fill: true,
+        backgroundColor: "rgba(23,162,184,0.2)",
+        borderColor: "rgba(23,162,184)"
+      },
+      {
+        label: "Humidity %",
+        data: Humidity,
+        fill: true,
+        borderColor: "#FFC107",
+        backgroundColor:"#C88C3233"
+      }
+    
+    ]}
     const [URL, setURL] = useState("https://www.metaweather.com/api/location/search/?query=Baghdad")
     const [WeatherURL, setWeatherURL] = useState("")
     
+
+
+
     const  fetching =  (URL) =>
         fetch(URL)
         .then((res) => res.json())
@@ -61,18 +68,25 @@ export default function WeatherApp() {
 
        useEffect(() => {
            fetching(WeatherURL)
-           .then((result)=> setWeatherData({loading:true, data:result})) 
+           .then((result)=> setWeatherData({loading:true, data:result}))
+          
+          
        }, [ WeatherURL]);
 
+       useEffect(() => {
+        if(WeatherData.data && WeatherData.loading) {
+          setdatasets(oneWeekTemp(WeatherData.data.consolidated_weather,"the_temp"))
+          setlables(oneWeekTemp(WeatherData.data.consolidated_weather,"applicable_date"))
+          setHumidity(oneWeekTemp(WeatherData.data.consolidated_weather,"humidity"))
+           
+        }
+       }, [WeatherData])
 
-
+ 
        const handleSubmit =(e)=>{
         e.preventDefault();
-      
           setURL("https://www.metaweather.com/api/location/search/?query="+userCountry)
-          setUserCountry("")
-          
-        
+          setUserCountry("") 
        }
 
 
@@ -97,21 +111,22 @@ export default function WeatherApp() {
               
 
             <BootStrap.Container>
-              <BootStrap.Row>
+              <BootStrap.Row className="mx-auto ">
                     <City
                     location={WeatherData.data.title}
-                    data={WeatherData.data.consolidated_weather[0]}
+                    data={WeatherData.data.consolidated_weather[0] }
+                    sunRise={WeatherData.data.sun_rise }
+                    sunSet={WeatherData.data.sun_set }
                     />
-                    <Chart data={state} />
+                    <Chart data={ChartData} />
                 </BootStrap.Row>
 
 
                 <BootStrap.Row className="mt-5 ">
                   <WeekTemp data={WeatherData.data} />
                 </BootStrap.Row>
-
+            
             </BootStrap.Container>
-
 
 
 
@@ -130,14 +145,5 @@ export default function WeatherApp() {
 
 
 
-
-let today = new Date();
-
-let now =today.getHours();
-
-const time= (afterHour) => {
-  
-    return now + afterHour+":00"
-}
 
 

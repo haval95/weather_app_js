@@ -10,8 +10,8 @@ function Th({header}) {
 
 
     return (
-        <tr >
-           { header.map((head, index) => <th key={index}> {head}</th>)}
+        <tr className="bg-info text-light border border-info shadow-sm  p-4" >
+           { header.map((head, index) => <th key={index} > {head}</th>)}
 
         </tr>
     )
@@ -21,7 +21,7 @@ function Tr({oneDayData}) {
 
    
     return (
-       <tr key={oneDayData.id}>
+       <tr key={oneDayData.id} className="border border-info">
        <td><Bootstrap.Image src={getImg(oneDayData.weather_state_abbr)} width="70"  /></td>
        <td> {oneDayData.applicable_date}</td>
        <td> {format(oneDayData.min_temp,0)} &deg;C</td>
