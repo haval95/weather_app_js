@@ -16,8 +16,8 @@ it has a very simple and elegant interface as shown below:
 
 
 ## Section 2
-[Section 2](bottom-app.PNG) 
-
+![Section 2](./bottom-app.PNG) 
+Format: ![Alt Text](url)
 in this section we have one table which is showing teampreatur data of the week as shown in the image. 
 
 
