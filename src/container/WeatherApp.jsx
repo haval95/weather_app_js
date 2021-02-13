@@ -44,9 +44,11 @@ export default function WeatherApp() {
     
 
 
+    var cors_api_url = 'https://cors-anywhere.herokuapp.com/';
+
 
     const  fetching =  (URL) =>
-        fetch(URL)
+        fetch(cors_api_url+URL)
         .then((res) => res.json())
         .then(
           (result) => {
