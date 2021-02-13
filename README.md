@@ -2,7 +2,7 @@
 Weather App is a web based Application which is there show weather data based on the location that the user wants, and the data is loaded from  [Metaweather](https://www.metaweather.com/api/)  Api. 
 
 it has a very simple and elegant interface as shown below: 
-[Section 1](top-app.PNG) 
+[Section 1](./top-app.PNG) 
 
 
 ## Main Components of section 1:
@@ -17,7 +17,7 @@ it has a very simple and elegant interface as shown below:
 
 ## Section 2
 ![Section 2](./bottom-app.PNG) 
-Format: ![Alt Text](url)
+
 in this section we have one table which is showing teampreatur data of the week as shown in the image. 
 
 
