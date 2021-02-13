@@ -1,4 +1,8 @@
 # Weather App
+Weather App is a web based Application which is there show weather data based on the location that the user wants. 
+
+it has a very simple and elegant interface as shown below: 
+
 
 One of these APIs should do the job.
 1- [here](https://www.metaweather.com/api/) or [here](https://weatherstack.com/documentation) or [here](https://api.windy.com/)
